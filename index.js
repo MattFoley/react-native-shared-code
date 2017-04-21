@@ -10,13 +10,14 @@ const argv = require('minimist')(process.argv.slice(2));
  * @param {string} platform Platform for which the bundle is built. Accepted values are 'ios' and 'android'.
  */
 function getBundleDependencies(rnDirectoryPath, platform) {
-  return child_process
+  let dependencies = child_process
     .execSync(
       `react-native dependencies --entry-file index.${platform}.js --platform ${platform} ${argv.verbose ? '--verbose' : ''}`, {
         cwd: rnDirectoryPath,
         shell: '/bin/bash'
-    })
-    .toString();
+    });
+  dependencies = dependencies.toString().replace(/ /g, "\\ ");
+  return dependencies;
 }
 
 function filterDependencies(dependencies) {
