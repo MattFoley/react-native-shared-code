@@ -3,6 +3,8 @@ Analyses your React Native project and calculates the percentage of
 * shared code across platforms
 * platform specific code
 
+_Note: Requires Node 6.x or higher._
+
 ## Formula
 The formulas are based on the two ways of targeting specific platforms in React Native:
 * [Platform module](https://facebook.github.io/react-native/docs/platform-specific-code.html#platform-module)
